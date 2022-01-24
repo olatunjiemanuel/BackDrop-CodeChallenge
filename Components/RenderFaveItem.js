@@ -4,6 +4,9 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 // SVG Imports
 import GreyHeartLogo from "../assets/SVGs/GreyHeartLogo";
 
+// colors import
+import colors from "../assets/Colors/Colors";
+
 const RenderFaveItem = (props) => {
   const { name, image } = props;
   return (
@@ -21,7 +24,10 @@ const RenderFaveItem = (props) => {
           <Text style={styles.nameText}>{name}</Text>
         </View>
         <TouchableOpacity style={styles.greyHeart}>
-          <GreyHeartLogo />
+          <GreyHeartLogo
+            strokeColor={colors.selectedHeartColor}
+            // bgColor={colors.selectedHeartColor}
+          />
         </TouchableOpacity>
       </View>
     </View>

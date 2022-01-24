@@ -4,8 +4,17 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 // SVG Imports
 import GreyHeartLogo from "../assets/SVGs/GreyHeartLogo";
 
+// colors import
+import colors from "../assets/Colors/Colors";
+
 const RenderItem = (props) => {
-  const { name, image, onPressHandler } = props;
+  const {
+    name,
+    image,
+    onPressHandler,
+    heartStrokeColor,
+    heartBackgroundColor,
+  } = props;
   return (
     <View style={styles.renderItemContainer}>
       <View style={styles.image}>
@@ -20,7 +29,10 @@ const RenderItem = (props) => {
         <Text style={styles.nameText}>{name}</Text>
       </View>
       <TouchableOpacity onPress={onPressHandler} style={styles.greyHeart}>
-        <GreyHeartLogo />
+        <GreyHeartLogo
+          strokeColor={heartStrokeColor}
+          bgColor={heartBackgroundColor}
+        />
       </TouchableOpacity>
     </View>
   );

@@ -19,6 +19,7 @@ const AllCats = () => {
   const [tempData, setTempData] = useState([]);
   const [storedData, setStoredData] = useState([]);
   const [liked, setLiked] = useState([]);
+  const [selected, setSelected] = useState(false);
   // const [favourites, setFavourites] = useState([]);
 
   const fetchData = async () => {
@@ -79,7 +80,18 @@ const AllCats = () => {
               <RenderItem
                 name={item.name}
                 image={item.image.url}
+                heartStrokeColor={
+                  selected
+                    ? colors.selectedHeartColor
+                    : colors.unselectedHeartColor
+                }
+                heartBackgroundColor={
+                  selected
+                    ? colors.selectedHeartColor
+                    : colors.unselectedHeartColor
+                }
                 onPressHandler={() => {
+                  selected ? setSelected(false) : setSelected(true);
                   const some = {
                     id: item.id,
                     name: item.name,
