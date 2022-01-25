@@ -1,4 +1,5 @@
 import * as React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 
 const GreyHeartLogo = (props) => {

@@ -4,9 +4,10 @@ import { StyleSheet, Text, View } from "react-native";
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [tempData, setTempData] = useState([]);
+  // const [tempData, setTempData] = useState([]);
+  const [selected, setSelected] = useState(false);
   return (
-    <AppContext.Provider value={{ tempData, setTempData }}>
+    <AppContext.Provider value={{ selected, setSelected }}>
       {children}
     </AppContext.Provider>
   );

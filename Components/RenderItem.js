@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // SVG Imports
@@ -15,6 +15,8 @@ const RenderItem = (props) => {
     heartStrokeColor,
     heartBackgroundColor,
   } = props;
+
+  const [liked, setLiked] = useState(false);
   return (
     <View style={styles.renderItemContainer}>
       <View style={styles.image}>
@@ -28,10 +30,20 @@ const RenderItem = (props) => {
       <View style={styles.textContainer}>
         <Text style={styles.nameText}>{name}</Text>
       </View>
-      <TouchableOpacity onPress={onPressHandler} style={styles.greyHeart}>
+      <TouchableOpacity
+        onPress={onPressHandler}
+        onPressOut={() => {
+          liked ? setLiked(false) : setLiked(true);
+        }}
+        style={styles.greyHeart}
+      >
         <GreyHeartLogo
-          strokeColor={heartStrokeColor}
-          bgColor={heartBackgroundColor}
+          strokeColor={
+            liked ? colors.selectedHeartColor : colors.unselectedHeartColor
+          }
+          bgColor={
+            liked ? colors.selectedHeartColor : colors.unselectedHeartColor
+          }
         />
       </TouchableOpacity>
     </View>

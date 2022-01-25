@@ -26,7 +26,7 @@ const RenderFaveItem = (props) => {
         <TouchableOpacity style={styles.greyHeart}>
           <GreyHeartLogo
             strokeColor={colors.selectedHeartColor}
-            // bgColor={colors.selectedHeartColor}
+            bgColor={colors.selectedHeartColor}
           />
         </TouchableOpacity>
       </View>

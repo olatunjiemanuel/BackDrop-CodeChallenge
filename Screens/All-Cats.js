@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -13,14 +13,18 @@ import axios from "axios";
 import HeaderComponent from "../Components/HeaderComponent";
 import RenderItem from "../Components/RenderItem";
 
+import AppContext from "../Context/AppContext";
+
 const AllCats = () => {
   const [data, setData] = useState([]);
-  //const { tempData, setTempData } = useContext(AppContext);
+  //const { selected, setSelected } = useContext(AppContext);
   const [tempData, setTempData] = useState([]);
   const [storedData, setStoredData] = useState([]);
   const [liked, setLiked] = useState([]);
-  const [selected, setSelected] = useState(false);
+  const [likedArray, setLikedArray] = useState([]);
+  const [heartColor, setHeartColor] = useState(false);
   // const [favourites, setFavourites] = useState([]);
+  const [clicked, setClicked] = useState(null);
 
   const fetchData = async () => {
     await axios
@@ -51,6 +55,20 @@ const AllCats = () => {
     // console.log(liked);
   };
 
+  // const likeCheck = (item) => {
+  //   if (
+  //     likedArray.filter((cats) => {
+  //       cats.id !== item.id;
+  //     })
+  //   ) {
+  //     console.log("true");
+  //     //setHeartColor(colors.selectedHeartColor);
+  //   } else {
+  //     console.log("false");
+  //     //setHeartColor(colors.unselectedHeartColor);
+  //   }
+  // };
+
   useEffect(() => {
     fetchData();
   }, [data]);
@@ -73,6 +91,7 @@ const AllCats = () => {
       <FlatList
         data={storedData}
         keyExtractor={(item) => item.id}
+        initialNumToRender={15}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           if (item?.image?.url && item?.origin && item?.name && item?.id) {
@@ -80,24 +99,16 @@ const AllCats = () => {
               <RenderItem
                 name={item.name}
                 image={item.image.url}
-                heartStrokeColor={
-                  selected
-                    ? colors.selectedHeartColor
-                    : colors.unselectedHeartColor
-                }
-                heartBackgroundColor={
-                  selected
-                    ? colors.selectedHeartColor
-                    : colors.unselectedHeartColor
-                }
                 onPressHandler={() => {
-                  selected ? setSelected(false) : setSelected(true);
                   const some = {
-                    id: item.id,
-                    name: item.name,
-                    image: item.image.url,
+                    id: item?.id,
+                    name: item?.name,
+                    image: item?.image.url,
                   };
                   liked.push(some);
+                  likedArray.push(item.id);
+                  console.log(likedArray);
+                  // console.log(liked);
                   saveFave();
                   // console.log(liked);
                 }}
