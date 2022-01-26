@@ -21,9 +21,7 @@ const AllCats = () => {
   const [tempData, setTempData] = useState([]);
   const [storedData, setStoredData] = useState([]);
   const [liked, setLiked] = useState([]);
-  const [likedArray, setLikedArray] = useState([]);
-  const [heartColor, setHeartColor] = useState(false);
-  // const [favourites, setFavourites] = useState([]);
+  const [unique, setUnique] = useState([]);
   const [clicked, setClicked] = useState(null);
 
   const fetchData = async () => {
@@ -106,8 +104,9 @@ const AllCats = () => {
                     image: item?.image.url,
                   };
                   liked.push(some);
-                  likedArray.push(item.id);
-                  console.log(likedArray);
+                  // setUnique(...new Set(liked));
+                  // likedArray.push(item.id);
+                  // console.log(likedArray);
                   // console.log(liked);
                   saveFave();
                   // console.log(liked);

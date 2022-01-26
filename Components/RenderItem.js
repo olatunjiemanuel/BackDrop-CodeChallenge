@@ -12,8 +12,8 @@ const RenderItem = (props) => {
     name,
     image,
     onPressHandler,
-    heartStrokeColor,
-    heartBackgroundColor,
+    // heartStrokeColor,
+    // heartBackgroundColor,
   } = props;
 
   const [liked, setLiked] = useState(false);
@@ -41,9 +41,7 @@ const RenderItem = (props) => {
           strokeColor={
             liked ? colors.selectedHeartColor : colors.unselectedHeartColor
           }
-          bgColor={
-            liked ? colors.selectedHeartColor : colors.unselectedHeartColor
-          }
+          bgColor={liked ? colors.selectedHeartColor : null}
         />
       </TouchableOpacity>
     </View>

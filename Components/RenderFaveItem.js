@@ -62,3 +62,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
+const ages = [3, 10, 18, 20];
+
+function checkAge(age) {
+  return age < 50;
+}
+
+function myFunction() {
+  ages.find(checkAge) ? console.log("true") : console.log("false");
+}
+
+myFunction();
