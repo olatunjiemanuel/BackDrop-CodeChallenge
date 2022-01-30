@@ -13,7 +13,7 @@ import axios from "axios";
 import HeaderComponent from "../Components/HeaderComponent";
 import RenderItem from "../Components/RenderItem";
 
-import AppContext from "../Context/AppContext";
+//import AppContext from "../Context/AppContext";
 
 const AllCats = () => {
   const [data, setData] = useState([]);
@@ -21,8 +21,6 @@ const AllCats = () => {
   const [tempData, setTempData] = useState([]);
   const [storedData, setStoredData] = useState([]);
   const [liked, setLiked] = useState([]);
-  const [unique, setUnique] = useState([]);
-  const [clicked, setClicked] = useState(null);
 
   const fetchData = async () => {
     await axios
@@ -32,8 +30,6 @@ const AllCats = () => {
         if (data) {
           setTempData(data);
           AsyncStorage.setItem("temp", JSON.stringify(tempData));
-          // alert("tempData Saved");
-          // console.log(tempData);
         } else {
           alert("temp data not saved");
         }
@@ -53,20 +49,6 @@ const AllCats = () => {
     // console.log(liked);
   };
 
-  // const likeCheck = (item) => {
-  //   if (
-  //     likedArray.filter((cats) => {
-  //       cats.id !== item.id;
-  //     })
-  //   ) {
-  //     console.log("true");
-  //     //setHeartColor(colors.selectedHeartColor);
-  //   } else {
-  //     console.log("false");
-  //     //setHeartColor(colors.unselectedHeartColor);
-  //   }
-  // };
-
   useEffect(() => {
     fetchData();
   }, [data]);
@@ -74,11 +56,6 @@ const AllCats = () => {
   useEffect(() => {
     getData();
   }, []);
-
-  // var arr1 = [1, 2, 3, 4],
-  //   arr2 = [2, 4],
-  //   res = arr1.filter((item) => !arr2.includes(item));
-  // console.log(res);
 
   return (
     <View style={styles.container}>

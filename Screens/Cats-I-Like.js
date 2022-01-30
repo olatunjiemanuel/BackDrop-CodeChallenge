@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

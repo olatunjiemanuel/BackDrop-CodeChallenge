@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "BackDrop-CodeChallenge",
+    "name": "BackDrop CodeChallenge",
     "slug": "BackDrop-CodeChallenge",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,13 +13,12 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "olatunjiemanuel.code",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
